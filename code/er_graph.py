@@ -1,8 +1,9 @@
 # Бойков Максим
 import random
+from graph import Graph
 
 
-def generate_er_graph_set(n: int, p: float) -> tuple:
+def generate_er_graph(n: int, p: float) -> Graph:
     V = set(range(n))
     E = set()
     
@@ -11,4 +12,10 @@ def generate_er_graph_set(n: int, p: float) -> tuple:
             if random.random() < p:
                 E.add(frozenset({i, j}))
     
-    return (V, E)
+    return Graph(V, E)
+
+
+if __name__ == "__main__":
+    R = 0.00345
+    graph = generate_er_graph(1347, R)
+    print(len(graph.edges))

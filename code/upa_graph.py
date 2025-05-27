@@ -1,5 +1,6 @@
 # Бойков Максим
 import random
+from graph import Graph
 
 
 class UPATrial:
@@ -22,8 +23,7 @@ class UPATrial:
         return new_node_neighbors
 
 
-def upa_graph_set(n: int, m: int) -> tuple:
-    
+def generate_upa_graph(n: int, m: int) -> Graph:
     V = set(range(n))
     E = set()
     
@@ -38,4 +38,10 @@ def upa_graph_set(n: int, m: int) -> tuple:
         for neighbor in neighbors:
             E.add(frozenset({new_node, neighbor}))
     
-    return (V, E)
+    return Graph(V, E)
+
+
+if __name__ == "__main__":
+    P = 2
+    graph = generate_upa_graph(1347, P)
+    print(len(graph.edges))
